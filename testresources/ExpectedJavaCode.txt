@@ -1,0 +1,116 @@
+public class JavaCodeTemplate {
+    public static void execute(){
+        int pointer = 0;
+        int[] memory = new int[30000]
+        memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+while ( memory[pointer] > 0 ) {
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+while ( memory[pointer] > 0 ) {
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+pointer--;
+pointer--;
+pointer--;
+pointer--;
+memory[pointer]--;
+}
+pointer++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+pointer++;
+memory[pointer]--;
+pointer++;
+pointer++;
+memory[pointer]++;
+while ( memory[pointer] > 0 ) {
+pointer--;
+}
+pointer--;
+memory[pointer]--;
+}
+pointer++;
+pointer++;
+System.out.print("memory[pointer]")
+pointer++;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+System.out.print("memory[pointer]")
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+pointer++;
+pointer++;
+System.out.print("memory[pointer]")
+pointer--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+pointer--;
+System.out.print("memory[pointer]")
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+pointer++;
+pointer++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+
+    }
+    public static void main(String[] args){
+        JavaCodeTemplate.execute();
+    }
+}

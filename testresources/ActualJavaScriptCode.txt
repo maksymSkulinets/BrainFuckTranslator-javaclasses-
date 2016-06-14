@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+<body>
+    <h3> Рeзультат выполнение комманд: </h3>
+    <h3>++++++++[>++++[>++>+++>+++>+<<<<-]>+>
+        +>->>+[<]<-]>>.>---.+++++++..+
+        ++.>>.<-.<.+++.------.--------.
+        >>+.>++.
+    </h3>
+
+  <script>
+
+      printBrainFuckOut(){
+        var pointer = 0;
+              var memory = new int[30000];
+              var buffer = "";
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+while ( memory[pointer] > 0 ) {
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+while ( memory[pointer] > 0 ) {
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+pointer--;
+pointer--;
+pointer--;
+pointer--;
+memory[pointer]--;
+}
+pointer++;
+memory[pointer]++;
+pointer++;
+memory[pointer]++;
+pointer++;
+memory[pointer]--;
+pointer++;
+pointer++;
+memory[pointer]++;
+while ( memory[pointer] > 0 ) {
+pointer--;
+}
+pointer--;
+memory[pointer]--;
+}
+pointer++;
+pointer++;
+System.out.print("memory[pointer]")
+pointer++;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+System.out.print("memory[pointer]")
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+pointer++;
+pointer++;
+System.out.print("memory[pointer]")
+pointer--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+pointer--;
+System.out.print("memory[pointer]")
+memory[pointer]++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+memory[pointer]--;
+System.out.print("memory[pointer]")
+pointer++;
+pointer++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+pointer++;
+memory[pointer]++;
+memory[pointer]++;
+System.out.print("memory[pointer]")
+
+        alert(buffer);
+      }
+  </script>
+
+</body>
+</html>
