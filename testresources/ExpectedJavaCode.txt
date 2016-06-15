@@ -1,7 +1,7 @@
 public class JavaCodeTemplate {
     public static void execute(){
         int pointer = 0;
-        int[] memory = new int[30000]
+        int[] memory = new int[30000];
         memory[pointer]++;
 memory[pointer]++;
 memory[pointer]++;

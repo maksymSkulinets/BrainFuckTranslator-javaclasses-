@@ -8,6 +8,8 @@ import java.util.List;
 
 public class JavaScriptCodeGenerator implements CommandVisitor {
 
+        /*TODO create commons interface CodeGenerator*/
+
     final static Logger log =
             LoggerFactory.getLogger(JavaScriptCodeGenerator.class);
 
@@ -81,7 +83,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Executing visit(PrintCommand command).");
         }
-        /*TODO WTF!!!???*/
+        /*TODO use " buffer += " form*/
         code.append("buffer = buffer + String.fromCharCode(memory[pointer])" + "\n");
     }
 

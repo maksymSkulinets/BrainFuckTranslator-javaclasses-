@@ -10,6 +10,7 @@ import java.util.Deque;
 import java.util.List;
 
 public class Analyser {
+
     final static Logger log = LoggerFactory.getLogger(Analyser.class);
 
     public Analyser() {

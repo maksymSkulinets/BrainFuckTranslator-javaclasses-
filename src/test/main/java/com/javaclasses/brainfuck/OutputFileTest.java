@@ -14,7 +14,7 @@ public class OutputFileTest {
     public void javaGenerationTest()  {
 
         final Analyser analyzer = new Analyser();
-        final JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
+        final JavaCodeGenerator generator = new JavaCodeGenerator();
 
         final List<Command> commands = new Analyser().
                 parseProgram(
@@ -23,10 +23,9 @@ public class OutputFileTest {
                                 "++.>>.<-.<.+++.------.--------." +
                                 ">>+.>++.");
 
-        JavaCodeGenerator generator = new JavaCodeGenerator();
-        codeGenerator.execute(commands);
+        generator.execute(commands);
 
-        String input = codeGenerator.getCode();
+        String input = generator.getCode();
         String actualPath = "testresources/ActualJavaCode.txt";
         String expectedPath = "testresources/ExpectedJavaCode.txt";
         String templatePath = new TemplatePathHolder().getPath("java");
@@ -45,7 +44,7 @@ public class OutputFileTest {
     public void javascriptGenerationTest()  {
 
         final Analyser analyzer = new Analyser();
-        final JavaScriptCodeGenerator codeGenerator = new JavaScriptCodeGenerator();
+        final JavaScriptCodeGenerator generator = new JavaScriptCodeGenerator();
 
         final List<Command> commands = new Analyser().
                 parseProgram(
@@ -54,10 +53,9 @@ public class OutputFileTest {
                                 "++.>>.<-.<.+++.------.--------." +
                                 ">>+.>++.");
 
-        JavaScriptCodeGenerator generator = new JavaScriptCodeGenerator();
-        codeGenerator.execute(commands);
+        generator.execute(commands);
 
-        String input = codeGenerator.getCode();
+        String input = generator.getCode();
         String actualPath = "testresources/ActualJavaScriptCode.txt";
         String expectedPath = "testresources/ExpectedJavaScriptCode.txt";
         String templatePath = new TemplatePathHolder().getPath("javascript");
@@ -71,5 +69,36 @@ public class OutputFileTest {
 
         Assert.assertEquals("Not equals actual and expected models", expected, actual);
     }
+
+    @Test
+    public void groovyGenerationTest()  {
+
+        final Analyser analyzer = new Analyser();
+        final GroovyCodeGenerator generator = new GroovyCodeGenerator();
+
+        final List<Command> commands = new Analyser().
+                parseProgram(
+                        "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
+                                "+>->>+[<]<-]>>.>---.+++++++..+" +
+                                "++.>>.<-.<.+++.------.--------." +
+                                ">>+.>++.");
+
+        generator.execute(commands);
+
+        String input = generator.getСode();
+        String actualPath = "testresources/ActualGroovyCode.txt";
+        String expectedPath = "testresources/ExpectedGroovyCode.txt";
+        String templatePath = new TemplatePathHolder().getPath("groovy");
+
+        TemplateModifier modifier =  new TemplateModifier();
+        FileOperationManager.writeToFile(actualPath, input);
+        modifier.execute(templatePath,input,actualPath);
+
+        String expected = FileOperationManager.readFromFile(actualPath);
+        String actual = FileOperationManager.readFromFile(expectedPath);
+
+        Assert.assertEquals("Not equals actual and expected models", expected, actual);
+    }
+
 
 }

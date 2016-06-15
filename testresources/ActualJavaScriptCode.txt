@@ -5,14 +5,14 @@
 </head>
 <body>
 
-<h3> BrainFuck result of input commands: </h3>
+<h3> BrainFuck result of input commands:    </h3>
 <h3>   ++++++++[>++++[>++>+++>+++>+<<<<-]>+></h3>
-<h3>   +>->>+[<]<-]>>.>---.+++++++..+</h3>
-<h3>   ++.>>.<-.<.+++.------.--------.</h3>
-<h3>   >>+.>++.</h3>
-<h3> Did you see "Hello World!"???</h3>
-<h3> If it true, I have correct realization</h3>
-<h3> of JavaScript generator.  </h3>
+<h3>   +>->>+[<]<-]>>.>---.+++++++..+       </h3>
+<h3>   ++.>>.<-.<.+++.------.--------.      </h3>
+<h3>   >>+.>++.                             </h3>
+<h3> Did you see "Hello World!"???          </h3>
+<h3> If it true, I have correct realization </h3>
+<h3> of JavaScript generator.               </h3>
 
     <script>
 

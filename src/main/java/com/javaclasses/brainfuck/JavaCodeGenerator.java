@@ -8,6 +8,8 @@ import java.util.List;
 
 public class JavaCodeGenerator implements CommandVisitor {
 
+    /*TODO create commons interface CodeGenerator*/
+
     final static Logger log =
             LoggerFactory.getLogger(JavaCodeGenerator.class);
 
@@ -35,7 +37,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         generator.execute(commands);
         String templatePath = new TemplatePathHolder().getPath("java");
         new TemplateModifier().execute(
-                templatePath,generator.getCode(),"generatedOut/JavaCode.txt");
+                templatePath, generator.getCode(), "generatedOut/JavaCode.txt");
 
 
     }
