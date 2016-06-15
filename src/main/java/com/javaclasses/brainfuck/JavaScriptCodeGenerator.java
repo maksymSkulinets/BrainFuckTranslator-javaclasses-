@@ -82,7 +82,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
             log.debug("Executing visit(PrintCommand command).");
         }
         /*TODO WTF!!!???*/
-        code.append("buffer = buffer + memory[point];" + "\n");
+        code.append("buffer = buffer + String.fromCharCode(memory[pointer])" + "\n");
     }
 
     @Override

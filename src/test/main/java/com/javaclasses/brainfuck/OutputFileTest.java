@@ -8,11 +8,14 @@ import java.util.List;
 
 public class OutputFileTest {
 
-    final Analyser analyzer = new Analyser();
-    final JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
+
 
     @Test
     public void javaGenerationTest()  {
+
+        final Analyser analyzer = new Analyser();
+        final JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
+
         final List<Command> commands = new Analyser().
                 parseProgram(
                         "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
@@ -40,6 +43,10 @@ public class OutputFileTest {
 
     @Test
     public void javascriptGenerationTest()  {
+
+        final Analyser analyzer = new Analyser();
+        final JavaScriptCodeGenerator codeGenerator = new JavaScriptCodeGenerator();
+
         final List<Command> commands = new Analyser().
                 parseProgram(
                         "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +

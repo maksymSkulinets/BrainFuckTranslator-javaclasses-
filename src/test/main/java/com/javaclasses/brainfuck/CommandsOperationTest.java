@@ -73,7 +73,7 @@ public class CommandsOperationTest {
         List<Command> commands = analyzer.parseProgram(input);
         for (Command current : commands) {
             current.acceptVisitor(javaCodeGenerator);
-            actual = javaCodeGenerator.getJavaCode();
+            actual = javaCodeGenerator.getСode();
         }
         Assert.assertEquals(message, expected, actual);
     }
