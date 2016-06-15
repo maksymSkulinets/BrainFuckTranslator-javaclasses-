@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h3> BrainFuck result of input commands:    </h3>
+<h3> Result of input commands(BrainFuck):   </h3>
 <h3>   ++++++++[>++++[>++>+++>+++>+<<<<-]>+></h3>
 <h3>   +>->>+[<]<-]>>.>---.+++++++..+       </h3>
 <h3>   ++.>>.<-.<.+++.------.--------.      </h3>

@@ -26,12 +26,21 @@ public class JavaCodeGenerator implements CommandVisitor {
     }
 
     public static void main(String[] args) {
+
+        String program = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
+                "+>->>+[<]<-]>>.>---.+++++++..+" +
+                "++.>>.<-.<.+++.------.--------." +
+                ">>+.>++.";
+
+        if (log.isInfoEnabled()) {
+            log.info("BrainFuck input = " + "\"" +program + "\"");
+        }
+        if (log.isDebugEnabled()) {
+            log.info("BrainFuck input = " + "\"" +program + "\"");
+        }
+
         final List<Command> commands = new Analyser().
-                parseProgram(
-                        "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
-                                "+>->>+[<]<-]>>.>---.+++++++..+" +
-                                "++.>>.<-.<.+++.------.--------." +
-                                ">>+.>++.");
+                parseProgram(program);
 
         com.javaclasses.brainfuck.command.JavaCodeGenerator generator = new com.javaclasses.brainfuck.command.JavaCodeGenerator();
         generator.execute(commands);

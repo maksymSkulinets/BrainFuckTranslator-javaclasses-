@@ -8,8 +8,6 @@ import java.util.Map;
 
 public class TemplatePathHolder {
 
-    /* TODO change class design */
-
     final static Logger log =
             LoggerFactory.getLogger(TemplatePathHolder.class);
 
@@ -32,11 +30,22 @@ public class TemplatePathHolder {
     }
 
     public String getPath(String key) {
+        if (log.isDebugEnabled()) {
+            log.debug("execute: getPath(): return : " +
+                    "" + templateLocations.get(key) + "/");
+        }
        return templateLocations.get(key);
     }
 
     public void addPath(String key, String path) {
-         templateLocations.put(key,path);
+
+        templateLocations.put(key,path);
+
+        if (log.isDebugEnabled()) {
+            log.debug("execute: addPath():" +
+                    " add:" +
+                    " key = \"" + key + "\" path = "  + path);
+        }
     }
 
 }

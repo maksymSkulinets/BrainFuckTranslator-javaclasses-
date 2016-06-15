@@ -26,18 +26,27 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
     }
 
     public static void main(String[] args) {
-        final List<Command> commands = new Analyser().
-                parseProgram(
-                        "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
-                                "+>->>+[<]<-]>>.>---.+++++++..+" +
-                                "++.>>.<-.<.+++.------.--------." +
-                                ">>+.>++.");
 
-     JavaScriptCodeGenerator generator = new JavaScriptCodeGenerator();
+        String program = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
+                "+>->>+[<]<-]>>.>---.+++++++..+" +
+                "++.>>.<-.<.+++.------.--------." +
+                ">>+.>++.";
+
+        if (log.isInfoEnabled()) {
+            log.info("BrainFuck input = " + "\"" + program + "\"");
+        }
+        if (log.isDebugEnabled()) {
+            log.info("BrainFuck input = " + "\"" + program + "\"");
+        }
+
+        final List<Command> commands = new Analyser().
+                parseProgram(program);
+
+        JavaScriptCodeGenerator generator = new JavaScriptCodeGenerator();
         generator.execute(commands);
         String templatePath = new TemplatePathHolder().getPath("javascript");
         new TemplateModifier().execute(
-                templatePath,generator.getCode(),"generatedOut/JavaScriptCode.html");
+                templatePath, generator.getCode(), "generatedOut/JavaScriptCode.html");
     }
 
     public void execute(List<Command> commands) {
@@ -83,7 +92,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Executing visit(PrintCommand command).");
         }
-        /*TODO use " buffer += " form*/
+
         code.append("buffer = buffer + String.fromCharCode(memory[pointer])" + "\n");
     }
 

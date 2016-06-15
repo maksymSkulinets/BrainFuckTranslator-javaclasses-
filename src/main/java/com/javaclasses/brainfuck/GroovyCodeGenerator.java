@@ -26,13 +26,21 @@ public class GroovyCodeGenerator implements CommandVisitor {
     }
 
     public static void main(String[] args) {
-        final List<Command> commands = new Analyser().
-                parseProgram(
-                        "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
-                                "+>->>+[<]<-]>>.>---.+++++++..+" +
-                                "++.>>.<-.<.+++.------.--------." +
-                                ">>+.>++.");
 
+        String program = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>" +
+                "+>->>+[<]<-]>>.>---.+++++++..+" +
+                "++.>>.<-.<.+++.------.--------." +
+                ">>+.>++.";
+
+        if (log.isInfoEnabled()) {
+            log.info("BrainFuck input = " + "\"" +program + "\"");
+        }
+        if (log.isDebugEnabled()) {
+            log.info("BrainFuck input = " + "\"" +program + "\"");
+        }
+
+        final List<Command> commands = new Analyser().
+                parseProgram(program);
         GroovyCodeGenerator generator = new GroovyCodeGenerator();
         generator.execute(commands);
         String templatePath = new TemplatePathHolder().getPath("groovy");

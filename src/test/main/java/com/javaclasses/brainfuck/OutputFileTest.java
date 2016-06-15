@@ -100,5 +100,4 @@ public class OutputFileTest {
         Assert.assertEquals("Not equals actual and expected models", expected, actual);
     }
 
-
 }

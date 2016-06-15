@@ -32,7 +32,10 @@ public class TemplateModifier {
             log.info("Execute: execute((String templatePath, String modified, String modifiedPath))");
         }
         if (log.isDebugEnabled()) {
-            log.debug("Enter: execute((String templatePath, String modified, String modifiedPath))");
+            log.debug("Enter: execute() param: " +
+                    " templatePath = \"" + templatePath + "\"" +
+                    " modified = \"" + modified + "\"" +
+                    " modifiedPath \"" + modifiedPath);
         }
 
         try {
@@ -55,7 +58,7 @@ public class TemplateModifier {
             throw new RuntimeException(new Exception());
         }
         if (log.isDebugEnabled()) {
-            log.debug("Exit: execute((String templatePath, String modified, String modifiedPath))");
+            log.debug("Exit: execute()");
         }
 
     }
