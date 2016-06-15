@@ -1,7 +1,10 @@
-
-def pointer = 0
-def memory =[]
-    for ( def i = 0; i < 30000; i++ ){
-        memory[i] = 0;
+public class GroovyCode {
+    public static void execute(){
+        int pointer = 0;
+        int[] memory = new int[30000];
+        ${model}
     }
-${model}
+    public static void main(String[] args){
+        GroovyCode.execute();
+    }
+}

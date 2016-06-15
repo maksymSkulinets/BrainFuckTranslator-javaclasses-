@@ -3,7 +3,7 @@ target/*
 build/*
 generatedOut/JavaScriptCode.html
 generatedOut/JavaCode.txt
-generatedOut/GroovyCode.txt
+generatedOut/GroovyCode.groovy
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

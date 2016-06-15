@@ -85,7 +85,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Executing visit(PrintCommand command).");
         }
-        сode.append("System.out.print(\"memory[pointer]\")" + "\n");
+        сode.append("System.out.print((char)memory[pointer]);" + "\n");
     }
 
     @Override

@@ -37,7 +37,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         generator.execute(commands);
         String templatePath = new TemplatePathHolder().getPath("groovy");
         new TemplateModifier().execute(
-                templatePath, generator.getСode(), "generatedOut/GroovyCode.txt");
+                templatePath, generator.getСode(), "generatedOut/GroovyCode.groovy");
 
 
     }
@@ -53,7 +53,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(IncrementCommand command).");
         }
-        сode.append("memory[pointer]++" + "\n");
+        сode.append("memory[pointer]++;" + "\n");
     }
 
     @Override
@@ -61,7 +61,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(DecrementCommand command).");
         }
-        сode.append("memory[pointer]--" + "\n");
+        сode.append("memory[pointer]--;" + "\n");
     }
 
     @Override
@@ -69,7 +69,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerLeftCommand command).");
         }
-        сode.append("pointer--" + "\n");
+        сode.append("pointer--;" + "\n");
     }
 
     @Override
@@ -77,7 +77,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerRightCommand command).");
         }
-        сode.append("pointer++" + "\n");
+        сode.append("pointer++;" + "\n");
     }
 
     @Override
@@ -85,7 +85,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Executing visit(PrintCommand command).");
         }
-        сode.append("print(\"memory[pointer]\")" + "\n");
+        сode.append("System.out.print((char)memory[pointer]);" + "\n");
     }
 
     @Override
