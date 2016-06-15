@@ -55,7 +55,7 @@ public class OutputFileTest {
 
         generator.execute(commands);
 
-        String input = generator.getCode();
+        String input = generator.getCodeContainer();
         String actualPath = "testresources/ActualJavaScriptCode.txt";
         String expectedPath = "testresources/ExpectedJavaScriptCode.txt";
         String templatePath = new TemplatePathHolder().getPath("javascript");
@@ -85,7 +85,7 @@ public class OutputFileTest {
 
         generator.execute(commands);
 
-        String input = generator.getСode();
+        String input = generator.getСodeContainer();
         String actualPath = "testresources/ActualGroovyCode.txt";
         String expectedPath = "testresources/ExpectedGroovyCode.txt";
         String templatePath = new TemplatePathHolder().getPath("groovy");

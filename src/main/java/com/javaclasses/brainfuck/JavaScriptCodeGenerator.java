@@ -12,8 +12,10 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
 
     final static Logger log =
             LoggerFactory.getLogger(JavaScriptCodeGenerator.class);
+    private static final String LINE_SEPARATOR =
+            System.getProperty("line.separator");
+    private StringBuffer codeContainer;
 
-    private StringBuffer code;
 
     public JavaScriptCodeGenerator() {
         if (log.isInfoEnabled()) {
@@ -22,7 +24,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Initialize");
         }
-        code = new StringBuffer();
+        codeContainer = new StringBuffer();
     }
 
     public static void main(String[] args) {
@@ -46,7 +48,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         generator.execute(commands);
         String templatePath = new TemplatePathHolder().getPath("javascript");
         new TemplateModifier().execute(
-                templatePath, generator.getCode(), "generatedOut/JavaScriptCode.html");
+                templatePath, generator.getCodeContainer(), "generatedOut/JavaScriptCode.html");
     }
 
     public void execute(List<Command> commands) {
@@ -60,7 +62,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(IncrementCommand command).");
         }
-        code.append("memory[pointer]++;" + "\n");
+        codeContainer.append("memory[pointer]++;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -68,7 +70,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(DecrementCommand command).");
         }
-        code.append("memory[pointer]--;" + "\n");
+        codeContainer.append("memory[pointer]--;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -76,7 +78,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerLeftCommand command).");
         }
-        code.append("pointer--;" + "\n");
+        codeContainer.append("pointer--;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerRightCommand command).");
         }
-        code.append("pointer++;" + "\n");
+        codeContainer.append("pointer++;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -93,7 +95,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
             log.debug("Executing visit(PrintCommand command).");
         }
 
-        code.append("buffer = buffer + String.fromCharCode(memory[pointer])" + "\n");
+        codeContainer.append("buffer = buffer + String.fromCharCode(memory[pointer])" + "\n");
     }
 
     @Override
@@ -103,7 +105,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
             log.debug("Enter: visit(LoopCommand command).");
         }
 
-        code.append("while ( memory[pointer] > 0 ) {\n");
+        codeContainer.append("while ( memory[pointer] > 0 ) {" + LINE_SEPARATOR);
 
         for (Command innerCommand : command.getCommands()) {
             innerCommand.acceptVisitor(this);
@@ -114,7 +116,7 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
 
         }
 
-        code.append("}\n");
+        codeContainer.append("}" + LINE_SEPARATOR);
 
         if (log.isDebugEnabled()) {
             log.debug("Exit: visit(LoopCommand command).");
@@ -122,15 +124,15 @@ public class JavaScriptCodeGenerator implements CommandVisitor {
 
     }
 
-    public String getCode() {
+    public String getCodeContainer() {
         if (log.isInfoEnabled()) {
-            log.debug("Execute: getCode()");
+            log.debug("Execute: getCodeContainer()");
         }
         if (log.isDebugEnabled()) {
-            log.debug("Execute: getCode() " +
-                    "\n Return:" + code.toString());
+            log.debug("Execute: getCodeContainer() " + LINE_SEPARATOR +
+                    "Return:" + codeContainer.toString());
         }
-        return code.toString();
+        return codeContainer.toString();
     }
 }
 

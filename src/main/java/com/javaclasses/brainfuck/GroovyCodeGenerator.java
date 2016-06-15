@@ -13,7 +13,10 @@ public class GroovyCodeGenerator implements CommandVisitor {
     final static Logger log =
             LoggerFactory.getLogger(GroovyCodeGenerator.class);
 
-    private StringBuffer сode;
+    private static final String LINE_SEPARATOR =
+            System.getProperty("line.separator");
+
+    private StringBuffer сodeContainer;
 
     public GroovyCodeGenerator() {
         if (log.isInfoEnabled()) {
@@ -22,7 +25,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Initialize");
         }
-        сode = new StringBuffer();
+        сodeContainer = new StringBuffer();
     }
 
     public static void main(String[] args) {
@@ -33,19 +36,20 @@ public class GroovyCodeGenerator implements CommandVisitor {
                 ">>+.>++.";
 
         if (log.isInfoEnabled()) {
-            log.info("BrainFuck input = " + "\"" +program + "\"");
+            log.info("BrainFuck input = " + "\"" + program + "\"");
         }
         if (log.isDebugEnabled()) {
-            log.info("BrainFuck input = " + "\"" +program + "\"");
+            log.info("BrainFuck input = " + "\"" + program + "\"");
         }
 
         final List<Command> commands = new Analyser().
                 parseProgram(program);
+
         GroovyCodeGenerator generator = new GroovyCodeGenerator();
         generator.execute(commands);
         String templatePath = new TemplatePathHolder().getPath("groovy");
         new TemplateModifier().execute(
-                templatePath, generator.getСode(), "generatedOut/GroovyCode.groovy");
+                templatePath, generator.getСodeContainer(), "generatedOut/GroovyCode.groovy");
 
 
     }
@@ -61,7 +65,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(IncrementCommand command).");
         }
-        сode.append("memory[pointer]++;" + "\n");
+        сodeContainer.append("memory[pointer]++;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -69,7 +73,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(DecrementCommand command).");
         }
-        сode.append("memory[pointer]--;" + "\n");
+        сodeContainer.append("memory[pointer]--;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -77,7 +81,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerLeftCommand command).");
         }
-        сode.append("pointer--;" + "\n");
+        сodeContainer.append("pointer--;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -85,7 +89,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerRightCommand command).");
         }
-        сode.append("pointer++;" + "\n");
+        сodeContainer.append("pointer++;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -93,7 +97,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Executing visit(PrintCommand command).");
         }
-        сode.append("System.out.print((char)memory[pointer]);" + "\n");
+        сodeContainer.append("System.out.print((char)memory[pointer]);" + "\n");
     }
 
     @Override
@@ -103,7 +107,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
             log.debug("Enter: visit(LoopCommand command).");
         }
 
-        сode.append("while ( memory[pointer] > 0 ) {\n");
+        сodeContainer.append("while ( memory[pointer] > 0 ) {\n");
 
         for (Command innerCommand : command.getCommands()) {
             innerCommand.acceptVisitor(this);
@@ -114,7 +118,7 @@ public class GroovyCodeGenerator implements CommandVisitor {
 
         }
 
-        сode.append("}\n");
+        сodeContainer.append("}" + LINE_SEPARATOR);
 
         if (log.isDebugEnabled()) {
             log.debug("Exit: visit(LoopCommand command).");
@@ -122,17 +126,16 @@ public class GroovyCodeGenerator implements CommandVisitor {
 
     }
 
-    public String getСode() {
+    public String getСodeContainer() {
         if (log.isInfoEnabled()) {
-            log.debug("Execute: getCode()");
+            log.debug("Execute: getCodeContainer()");
         }
         if (log.isDebugEnabled()) {
-            log.debug("Execute: getCode() " +
-                    "\n Return:" + сode.toString());
+            log.debug("Execute: getCodeContainer() " + LINE_SEPARATOR +
+                    "Return:" + сodeContainer.toString());
         }
-        return сode.toString();
+        return сodeContainer.toString();
     }
-
 
 }
 

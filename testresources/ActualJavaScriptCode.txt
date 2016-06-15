@@ -11,7 +11,7 @@
 <h3>   ++.>>.<-.<.+++.------.--------.      </h3>
 <h3>   >>+.>++.                             </h3>
 <h3> Did you see "Hello World!"???          </h3>
-<h3> If it true, I have correct realization </h3>
+<h3> If it true, I have correct implementation </h3>
 <h3> of JavaScript generator.               </h3>
 
     <script>

@@ -26,7 +26,7 @@ public class TemplateModifier {
         }
     }
 
-    public void execute(String templatePath, String modified, String modifiedPath) {
+    public void execute(String templatePath, String modify, String pathToSave) {
 
         if (log.isInfoEnabled()) {
             log.info("Execute: execute((String templatePath, String modified, String modifiedPath))");
@@ -34,16 +34,16 @@ public class TemplateModifier {
         if (log.isDebugEnabled()) {
             log.debug("Enter: execute() param: " +
                     " templatePath = \"" + templatePath + "\"" +
-                    " modified = \"" + modified + "\"" +
-                    " modifiedPath \"" + modifiedPath);
+                    " modified = \"" + modify + "\"" +
+                    " modifiedPath \"" + pathToSave);
         }
 
         try {
 
             template = configuration.getTemplate(templatePath);
             Map<String, String> data = new HashMap<>();
-            data.put("model", modified);
-            Writer fileWriter = new FileWriter(new File(modifiedPath));
+            data.put("model", modify);
+            Writer fileWriter = new FileWriter(new File(pathToSave));
             template.process(data, fileWriter);
 
         } catch (Exception e) {

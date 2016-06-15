@@ -13,7 +13,10 @@ public class JavaCodeGenerator implements CommandVisitor {
     final static Logger log =
             LoggerFactory.getLogger(JavaCodeGenerator.class);
 
-    private StringBuffer сode;
+    private static final String LINE_SEPARATOR =
+            System.getProperty("line.separator");
+
+    private StringBuffer сodeContainer;
 
     public JavaCodeGenerator() {
         if (log.isInfoEnabled()) {
@@ -22,7 +25,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Initialize");
         }
-        сode = new StringBuffer();
+        сodeContainer = new StringBuffer();
     }
 
     public static void main(String[] args) {
@@ -62,7 +65,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(IncrementCommand command).");
         }
-        сode.append("memory[pointer]++;" + "\n");
+        сodeContainer.append("memory[pointer]++;" +  LINE_SEPARATOR);
     }
 
     @Override
@@ -70,7 +73,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(DecrementCommand command).");
         }
-        сode.append("memory[pointer]--;" + "\n");
+        сodeContainer.append("memory[pointer]--;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -78,7 +81,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerLeftCommand command).");
         }
-        сode.append("pointer--;" + "\n");
+        сodeContainer.append("pointer--;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -86,7 +89,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Execute: visit(MovePointerRightCommand command).");
         }
-        сode.append("pointer++;" + "\n");
+        сodeContainer.append("pointer++;" + LINE_SEPARATOR);
     }
 
     @Override
@@ -94,7 +97,7 @@ public class JavaCodeGenerator implements CommandVisitor {
         if (log.isDebugEnabled()) {
             log.debug("Executing visit(PrintCommand command).");
         }
-        сode.append("System.out.print((char)memory[pointer]);" + "\n");
+        сodeContainer.append("System.out.print((char)memory[pointer]);" + "\n");
     }
 
     @Override
@@ -104,7 +107,8 @@ public class JavaCodeGenerator implements CommandVisitor {
             log.debug("Enter: visit(LoopCommand command).");
         }
 
-        сode.append("while ( memory[pointer] > 0 ) {\n");
+        сodeContainer.append("while ( memory[pointer] > 0 ) {"
+                + LINE_SEPARATOR);
 
         for (Command innerCommand : command.getCommands()) {
             innerCommand.acceptVisitor(this);
@@ -115,7 +119,7 @@ public class JavaCodeGenerator implements CommandVisitor {
 
         }
 
-        сode.append("}\n");
+        сodeContainer.append("}" + LINE_SEPARATOR);
 
         if (log.isDebugEnabled()) {
             log.debug("Exit: visit(LoopCommand command).");
@@ -123,15 +127,15 @@ public class JavaCodeGenerator implements CommandVisitor {
 
     }
 
-    public String getСode() {
+    public String getСodeContainer() {
         if (log.isInfoEnabled()) {
-            log.debug("Execute: getCode()");
+            log.debug("Execute: getCodeContainer()");
         }
         if (log.isDebugEnabled()) {
-            log.debug("Execute: getCode() " +
-                    "\n Return:" + сode.toString());
+            log.debug("Execute: getCodeContainer() " + LINE_SEPARATOR +
+                    "Return:" + сodeContainer.toString());
         }
-        return сode.toString();
+        return сodeContainer.toString();
     }
 }
 

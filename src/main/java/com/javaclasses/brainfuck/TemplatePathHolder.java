@@ -32,7 +32,7 @@ public class TemplatePathHolder {
     public String getPath(String key) {
         if (log.isDebugEnabled()) {
             log.debug("execute: getPath(): return : " +
-                    "" + templateLocations.get(key) + "/");
+                    "" + templateLocations.get(key));
         }
        return templateLocations.get(key);
     }

@@ -50,7 +50,6 @@ public class FileOperationManager {
         if (log.isDebugEnabled()) {
             log.debug("Exit execute((String templatePath, String modified, String modifiedPath))");
         }
-
     }
 
     public static String readFromFile(String filePath) {
